@@ -16,14 +16,14 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
 // controllers
-const UserControl = require("./controllers/CouncilApp");
+const councilControl = require("./controllers/CouncilApp");
 
 // Routes
-app.post("/api/create", UserControl.create);
-// app.put("/api/user/update/:_id", UserControl.update);
-// app.get("/api/user/get", UserControl.get);
-// app.get("/api/user/getID/:_id", UserControl.getID)
-// app.delete("/api/user/delete/:_id", UserControl.delete);
+app.post("/api/council/create", councilControl.create);
+app.put("/api/council/update/:_id", councilControl.update);
+// app.get("/api/council/get", councilControl.get);
+app.get("/api/council/getID/:_id", councilControl.getID)
+app.delete("/api/council/delete/:_id", councilControl.delete);
 
 // start server
 const PORT = process.env.PORT;

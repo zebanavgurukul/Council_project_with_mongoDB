@@ -14,5 +14,32 @@ module.exports = {
             .catch(err => {
                 res.json({ success: false, result : err });
             });
+    },
+    getID : (req,res) => {
+        UserModel.findById({_id : req.params._id})
+        .then(result => {
+            res.json({ success : true, result : result});
+        })
+        .catch((err) => {
+            res.json({ success : true, result : result});
+        })
+    },
+    update : (req,res) => {
+        UserModel.findByIdAndUpdate({_id : req.params._id},req.body)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(err => {
+            res.json({ success: false, result : err });
+        });
+    },
+    delete : (req, res) =>{
+        UserModel.findByIdAndRemove({_id : req.params._id})
+        .then((result) => {
+            res.json({ success : true, result : result})
+        })
+        .catch((err) => {
+            res.json({ success : true, result : result});
+        })
     }
 }
