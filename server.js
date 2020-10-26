@@ -21,7 +21,7 @@ const councilControl = require("./controllers/CouncilApp");
 // Routes
 app.post("/api/council/create", councilControl.create);
 app.put("/api/council/update/:_id", councilControl.update);
-// app.get("/api/council/get", councilControl.get);
+app.get("/api/council/search/:STUDENT_NAME", councilControl.getsearch);
 app.get("/api/council/getID/:_id", councilControl.getID)
 app.delete("/api/council/delete/:_id", councilControl.delete);
 

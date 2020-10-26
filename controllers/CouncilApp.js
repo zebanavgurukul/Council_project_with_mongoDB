@@ -9,37 +9,60 @@ module.exports = {
         });
         user.save()
             .then(result => {
-                res.json({ success: true, result : result });
+                res.json({result});
             })
             .catch(err => {
-                res.json({ success: false, result : err });
+                res.json({err});
             });
     },
+
     getID : (req,res) => {
         UserModel.findById({_id : req.params._id})
         .then(result => {
-            res.json({ success : true, result : result});
+            res.json({result});
         })
         .catch((err) => {
-            res.json({ success : true, result : result});
+            res.json({result});
         })
     },
+
+    getsearch : (req,res) => {
+        var regex = new RegExp(req.params.STUDENT_NAME,"i")
+        var list = []
+        UserModel.find({STUDENT_NAME:regex})
+        .then(Response => {
+            for (var i = 0; i < Response.length; i++){
+                var data = {
+                    STUDENT_NAME : Response[i]["STUDENT_NAME"],
+                    COUNCIL_POST : Response[i]["COUNCIL_POST"],
+                    COUNCIL_START_DATE : Response[i]["COUNCIL_START_DATE"]
+                }
+                list.push(data)
+            }
+            res.json({list});
+        })
+        .catch((err) => {
+            res.json({err});
+        })
+    },
+
     update : (req,res) => {
         UserModel.findByIdAndUpdate({_id : req.params._id},req.body)
         .then(user => {
             res.json(user);
         })
         .catch(err => {
-            res.json({ success: false, result : err });
+            res.json({err});
         });
     },
+
     delete : (req, res) =>{
         UserModel.findByIdAndRemove({_id : req.params._id})
         .then((result) => {
-            res.json({ success : true, result : result})
+            res.json({result})
         })
         .catch((err) => {
-            res.json({ success : true, result : result});
+            res.json({result});
         })
     }
 }
