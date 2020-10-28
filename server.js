@@ -27,6 +27,7 @@ app.put("/api/council/update/:_id", councilControl.update);
 app.delete("/api/council/delete/:_id", councilControl.delete);
 app.post("/api/council/createWork", councilControl.createWork);
 app.get("/api/Work_search/:COUNCIL_POST", councilControl.getWorksearch);
+app.put("/api/updateWork/:_id", councilControl.updateWork);
 
 
 // start server

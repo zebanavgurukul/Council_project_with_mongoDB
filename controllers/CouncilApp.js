@@ -115,4 +115,13 @@ module.exports = {
             res.json({err});
         })
     },
+    updateWork : (req,res) => {
+        CouncilModel.findByIdAndUpdate({_id : req.params._id},req.body)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(err => {
+            res.json({err});
+        });
+    }
 }
