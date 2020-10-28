@@ -20,10 +20,14 @@ const councilControl = require("./controllers/CouncilApp");
 
 // Routes
 app.post("/api/council/create", councilControl.create);
-app.put("/api/council/update/:_id", councilControl.update);
-app.get("/api/council/search/:STUDENT_NAME", councilControl.getsearch);
 app.get("/api/council/getID/:_id", councilControl.getID)
+app.get("/api/council/search/:STUDENT_NAME", councilControl.getsearch);
+app.get("/api/council_search/:COUNCIL_POST", councilControl.get_COUNCIL_POST);
+app.put("/api/council/update/:_id", councilControl.update);
 app.delete("/api/council/delete/:_id", councilControl.delete);
+app.post("/api/council/createWork", councilControl.createWork);
+app.get("/api/Work_search/:COUNCIL_POST", councilControl.getWorksearch);
+
 
 // start server
 const PORT = process.env.PORT;
